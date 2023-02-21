@@ -17,8 +17,8 @@ form.addEventListener('submit', onSubmit);
 function updateForm() {
     email.value = load(LOCALSTORAGE_KEY).email || "";
     message.value = load(LOCALSTORAGE_KEY).message || "";
-    user.email = '';
-    user.message = '';
+    user.email = load(LOCALSTORAGE_KEY).email || "";
+    user.message = load(LOCALSTORAGE_KEY).message || "";
 }
 
 function saveForm() {
