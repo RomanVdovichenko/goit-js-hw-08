@@ -1,14 +1,13 @@
 import throttle from 'lodash.throttle';
 import { load, save,remove } from './storage';
-// const throttle = require('lodash.throttle');
 
 const form = document.querySelector(".feedback-form");
 const email = form.querySelector('input');
 const message = form.querySelector('textarea');
 const LOCALSTORAGE_KEY = "feedback-form-state";
 const user = {
-    email: email,
-    message: message,
+    email: '',
+    message: '',
 }
 
 updateForm();
@@ -16,10 +15,10 @@ form.addEventListener("input", throttle((saveForm), 500));
 form.addEventListener('submit', onSubmit);
 
 function updateForm() {
-    email.textContent = load(LOCALSTORAGE_KEY).email;
-    email.placeholder = load(LOCALSTORAGE_KEY).email || '';
-    console.log(email.textContent);
-    message.textContent = load(LOCALSTORAGE_KEY).message;
+    email.value = load(LOCALSTORAGE_KEY).email || "";
+    message.value = load(LOCALSTORAGE_KEY).message || "";
+    user.email = '';
+    user.message = '';
 }
 
 function saveForm() {
@@ -33,6 +32,7 @@ function onSubmit(evt) {
     console.log(user);
     remove(LOCALSTORAGE_KEY);
     form.reset();
+    updateForm();
 }
 
 
