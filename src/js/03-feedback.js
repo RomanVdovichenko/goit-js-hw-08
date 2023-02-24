@@ -1,5 +1,5 @@
 import throttle from 'lodash.throttle';
-import { load, save,remove } from './storage';
+import { load, save, remove } from './storage';
 
 const form = document.querySelector(".feedback-form");
 const email = form.querySelector('input');
